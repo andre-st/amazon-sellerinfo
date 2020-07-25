@@ -27,8 +27,6 @@
     }
   ],
   "permissions": [
-	"webRequest",
-	  
     "https://www.amazon.de/gp/cart/*",
     "https://www.amazon.de/gp/help/seller/*",
 
