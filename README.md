@@ -10,17 +10,20 @@ right before I could mess up.
 ![Screenshot](README-screenshot.png?raw=true "Screenshot")
 
 
-## Install temporary
+## Install permanently
+
+1. currently not available on addons.mozilla.org (self-distributed via GitHub)
+2. download [latest XPI-file](https://github.com/andre-st/amazon-sellerinfo/releases) (all signed)
+3. visit `about:addons`, click gear symbol &#9881;, install from file, select downloaded XPI-file 
+
+
+## Install temporary (developers)
 
 1. download/clone this project
 2. visit `about:debugging` in Firefox
 3. click "Load Temporary Add-on" and select `manifest.json`
 
-## Install permanently
-
-1. currently not available on addons.mozilla.org
-2. download [latest XPI-file](https://github.com/andre-st/amazon-sellerinfo/releases)
-3. visit `about:addons`, click gear symbol &#9881;, install from file, select downloaded XPI-file 
+For permanent install of unsigned add-ons [see here](https://support.mozilla.org/en-US/kb/add-on-signing-in-firefox#w_what-are-my-options-if-i-want-to-use-an-unsigned-add-on-advanced-users)
 
 
 ## Permissions
