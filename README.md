@@ -2,7 +2,7 @@
 
 ![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)
 
-I often forget to check the seller before ordering. 
+I often forget to check the seller before ordering (probably by design). 
 This addon shows me the seller ratings on the Amazon shopping cart webpage, 
 right before I could mess up.
 
@@ -39,7 +39,7 @@ For permanent install of unsigned add-ons [see here](https://support.mozilla.org
 ## Observations and limitations
 
 - European Amazon sites only
-- Amazon's request throttling might kick in and you will see one or many "?" rating (web console should print a HTTP 503 error)
+- Amazon's request throttling might kick in and you will see one or many "?" ratings (web console should print a HTTP 503 error)
 - see [current issues](https://github.com/andre-st/amazon-sellerinfo/issues)
 
 
