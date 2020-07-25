@@ -12,7 +12,7 @@ MAKEFLAGS += --no-builtin-rules
 
 # Configure Make rules:
 PROJECT_VERSION   = 1.0
-PACKAGE           = firefox-whewtab
+PACKAGE           = amazon-sellerinfo
 RELEASE           = $(PACKAGE)-$(PROJECT_VERSION)
 GITDIR            = $(wildcard .git)
 BUILD_DIR         = _build
