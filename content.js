@@ -17,7 +17,7 @@ sellerUrlsUniq.forEach( url =>
 	const absUrl = a.href;
 	
 	fetch( absUrl )
-	.then( function( resp )
+	.then( resp =>
 	{
 		if( resp.ok )
 			return resp.text();
@@ -27,7 +27,7 @@ sellerUrlsUniq.forEach( url =>
 			rateSellerLinks( url, SELLER_RATING_UNKNOWN );
 		}
 	})
-	.then( function( text )
+	.then( text =>
 	{
 		const m = text.match( SELLER_RATING_REX );
 		console.log( '[DEBUG] Fetched ' + url );
