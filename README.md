@@ -1,9 +1,9 @@
-# Firefox Addon: Amazon Seller Info, v1.0
+# Firefox Add-On: Amazon Seller Info, v1.0
 
 ![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)
 
 I often forget to check the seller before ordering (probably by design). 
-This addon shows me the seller ratings on the Amazon shopping cart webpage, 
+This add-on shows me the seller ratings on the Amazon shopping cart webpage, 
 right before I could mess up.
 
 
@@ -28,10 +28,10 @@ For permanent install of unsigned add-ons [see here](https://support.mozilla.org
 
 ## Permissions
 
-- modifies Amazon's shopping cart webpage
+- modifies Amazon's shopping cart webpage in order to display seller ratings next to the seller names
 - reads Amazon's seller info webpage
 - details see 'permissions' in [manifest.json](manifest.json)
-- this addon is easy to inspect if you consider using it:
+- this add-on is easy to inspect if you consider using it:
 	- no 3rd party libs, nothing minified, small files
 	- XPI files are just Zip archives
 
