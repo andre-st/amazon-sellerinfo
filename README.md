@@ -1,4 +1,4 @@
-# Firefox Add-On: Amazon Seller Info, v1.0
+# Firefox Add-On: Amazon Seller Info, v1.1
 
 ![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)
 
