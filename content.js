@@ -3,10 +3,11 @@ const SELLER_RATING_UNKNOWN = '?';
 
 const sellerLinks     = Array.from( document.querySelectorAll( 'a[href^="/gp/help/seller/at-a-glance.html"]' ));
 const sellerUrls      = sellerLinks.map( l => l.getAttribute( 'href' ));
-const sellerUrlsUniq  = sellerUrls.filter( (l,i,a) => a.indexOf( l ) === i );  // Prevent HTTP 503 request throttling
-const rateSellerLinks = (url,r) => sellerLinks
-                                     .filter ( l => l.getAttribute( 'href' ) == url )
+const sellerUrlsUniq  = sellerUrls.filter( (v,i,a) => a.indexOf( v ) === i );  // Prevent HTTP 503 request throttling
+const rateSellerLinks = (href,r) => sellerLinks
+                                     .filter ( l => l.getAttribute( 'href' ) == href )
                                      .forEach( l => l.setAttribute( 'data-andrest-rating', r ));
+                                     // UI elements are added via CSS.
 
 sellerUrlsUniq.forEach( url =>
 {
@@ -32,7 +33,6 @@ sellerUrlsUniq.forEach( url =>
 		console.log( '[DEBUG] Fetched ' + url );
 		rateSellerLinks( url, m ? m[1] : SELLER_RATING_UNKNOWN );
 	});
-	
 });
 
 
