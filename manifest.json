@@ -1,0 +1,54 @@
+{
+  "manifest_version": 2,
+  "name": "amazon-sellerinfo",
+  "short_name": "amazon-sellerinfo",
+  "author": "Andre St.",
+  "homepage_url": "https://github.com/andre-st/amazon-sellerinfo",
+  "version": "1.0.0",
+  "description": "Shows seller rating etc on the cart page",
+  "applications": {
+    "gecko": {
+      "id": "amazon-sellerinfo@andre-st.github.io",
+      "strict_min_version": "54.0"
+    }
+  },
+  "content_scripts": [{
+      "matches": [
+        "https://www.amazon.de/gp/cart/view.html*",
+        "https://www.amazon.es/gp/cart/view.html*",
+        "https://www.amazon.fr/gp/cart/view.html*",
+        "https://www.amazon.it/gp/cart/view.html*",
+        "https://www.amazon.co.uk/gp/cart/view.html*"
+      ],
+      "js":  ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_end",
+      "all_frames" : true
+    }
+  ],
+  "permissions": [
+	"webRequest",
+	  
+    "https://www.amazon.de/gp/cart/*",
+    "https://www.amazon.de/gp/help/seller/*",
+
+    "https://www.amazon.es/gp/cart/*",
+    "https://www.amazon.es/gp/help/seller/*",
+
+    "https://www.amazon.fr/gp/cart/*",
+    "https://www.amazon.fr/gp/help/seller/*",
+
+    "https://www.amazon.it/gp/cart/*",
+    "https://www.amazon.it/gp/help/seller/*",
+
+    "https://www.amazon.co.uk/gp/cart/*",
+    "https://www.amazon.co.uk/gp/help/seller/*"
+  ],
+  "icons": {
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "96": "icons/96.png",
+    "128": "icons/128.png"
+  }
+}
+

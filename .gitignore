@@ -1,0 +1,11 @@
+*~
+*.bak
+*.tmp
+*.swp
+*.log
+*.tar.gz
+*.zip
+*.cookie
+*.xpi
+_*
+

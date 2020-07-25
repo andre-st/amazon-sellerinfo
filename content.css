@@ -1,0 +1,47 @@
+a[data-andrest-rating]::after
+{
+	display: inline-block;
+	content: attr(data-andrest-rating);
+	border-radius: 100%;
+	font-size: 1.5em;
+	font-weight: bold;
+	height: 3em;
+	width: 3em;
+	line-height: 3em;
+	text-align: center;
+	margin: 0 0 0 0.5em;
+	
+	/* Bad rating by default: */
+	background-color: red;
+	color: #fff;
+}
+
+a[data-andrest-rating^='80']::after,
+a[data-andrest-rating^='81']::after,
+a[data-andrest-rating^='82']::after,
+a[data-andrest-rating^='83']::after,
+a[data-andrest-rating^='84']::after,
+a[data-andrest-rating^='85']::after,
+a[data-andrest-rating^='86']::after,
+a[data-andrest-rating^='87']::after,
+a[data-andrest-rating^='88']::after,
+a[data-andrest-rating^='89']::after
+{ 
+	background-color: orange;
+}
+
+a[data-andrest-rating^='90' ]::after,
+a[data-andrest-rating^='91' ]::after,
+a[data-andrest-rating^='92' ]::after,
+a[data-andrest-rating^='93' ]::after,
+a[data-andrest-rating^='94' ]::after,
+a[data-andrest-rating^='95' ]::after,
+a[data-andrest-rating^='96' ]::after,
+a[data-andrest-rating^='97' ]::after,
+a[data-andrest-rating^='98' ]::after,
+a[data-andrest-rating^='99' ]::after,
+a[data-andrest-rating^='100']::after
+{ 
+	background-color: green;
+}
+
