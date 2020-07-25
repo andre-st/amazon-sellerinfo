@@ -4,7 +4,7 @@
   "short_name": "amazon-sellerinfo",
   "author": "Andre St.",
   "homepage_url": "https://github.com/andre-st/amazon-sellerinfo",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Displays seller ratings on Amazon's shopping cart page",
   "applications": {
     "gecko": {

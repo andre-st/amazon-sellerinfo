@@ -11,7 +11,7 @@ MAKEFLAGS += --no-builtin-rules
 
 
 # Configure Make rules:
-PROJECT_VERSION   = 1.1
+PROJECT_VERSION   = 1.1.1
 PACKAGE           = amazon-sellerinfo
 RELEASE           = $(PACKAGE)-$(PROJECT_VERSION)
 GITDIR            = $(wildcard .git)
@@ -30,6 +30,7 @@ all: release
 docs:
 	# vX.X, vX.XX.X, image:X.XX.X
 	sed -i -E "s/([v:])[0-9\.]+/\1${PROJECT_VERSION}/"  README.md manifest.json
+	sed -i -E 's/("version":\s*")[0-9\.]+/\1${PROJECT_VERSION}/' manifest.json
 
 
 # ----------------------------------------------------------------------------
