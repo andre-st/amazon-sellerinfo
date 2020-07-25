@@ -20,8 +20,7 @@ right before I could mess up.
 
 1. currently not available on addons.mozilla.org
 2. download [latest XPI-file](https://github.com/andre-st/amazon-sellerinfo/releases)
-3. visit `about:config` and change `xpinstall.signatures.required` = false
-4. visit `about:addons`, click gear symbol &#9881;, install from file, select downloaded XPI-file 
+3. visit `about:addons`, click gear symbol &#9881;, install from file, select downloaded XPI-file 
 
 
 ## Permissions
