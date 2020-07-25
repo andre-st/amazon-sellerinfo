@@ -9,7 +9,7 @@
   "applications": {
     "gecko": {
       "id": "amazon-sellerinfo@andre-st.github.io",
-      "strict_min_version": "54.0"
+      "strict_min_version": "65.0"
     }
   },
   "content_scripts": [{
