@@ -1,15 +1,14 @@
 a[data-andrest-rating]::after
 {
 	display: inline-block;
-	content: attr(data-andrest-rating);
+	content: attr(data-andrest-country) "\2007" attr(data-andrest-rating);
 	border-radius: 100%;
 	font-size: 1.5em;
 	font-weight: bold;
-	height: 3em;
-	width: 3em;
-	line-height: 3em;
 	text-align: center;
 	margin: 0 0 0 0.5em;
+	box-sizing: border-box;
+	padding: 0.5em 0.75em;
 	
 	/* Bad rating by default: */
 	background-color: red;

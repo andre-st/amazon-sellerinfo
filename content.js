@@ -1,13 +1,18 @@
-const SELLER_RATING_REX     = new RegExp( 'feedback-detail-description" href="#"><b>([0-9]+%)', 'm' );
-const SELLER_RATING_UNKNOWN = '?';
+const SELLER_RATING_REX      = new RegExp( 'feedback-detail-description" href="#"><b>([0-9]+%)',       'm' );
+const SELLER_COUNTRY_REX     = new RegExp( '<span class="a-list-item">([A-Z]{2})<\/span><\/li><\/ul>', 'm' );  // Two letter code
+const SELLER_RATING_UNKNOWN  = '?';
+const SELLER_COUNTRY_UNKNOWN = '?';
 
 const sellerLinks     = Array.from( document.querySelectorAll( 'a[href^="/gp/help/seller/at-a-glance.html"]' ));
 const sellerUrls      = sellerLinks.map( l => l.getAttribute( 'href' ));
-const sellerUrlsUniq  = sellerUrls.filter( (v,i,a) => a.indexOf( v ) === i );  // Prevent HTTP 503 request throttling
-const rateSellerLinks = (href,r) => sellerLinks
-                                     .filter ( l => l.getAttribute( 'href' ) == href )
-                                     .forEach( l => l.setAttribute( 'data-andrest-rating', r ));
-                                     // UI elements are added via CSS.
+const sellerUrlsUniq  = sellerUrls.filter( (v,i,a) => a.indexOf( v ) === i );  // Prevents HTTP 503 request throttling
+const rateSellerLinks = (href,r,c) => sellerLinks
+                                        .filter ( l => l.getAttribute( 'href' ) == href )
+                                        .forEach( l => {
+                                           l.setAttribute( 'data-andrest-rating',  r );
+                                           l.setAttribute( 'data-andrest-country', c );
+                                        });
+                                        // UI elements are added via CSS.
 
 sellerUrlsUniq.forEach( url =>
 {
@@ -24,14 +29,17 @@ sellerUrlsUniq.forEach( url =>
 		else
 		{
 			console.log( '[ERROR] Fetching seller info failed: ' + url + ' (HTTP ' + resp.status + ')' );
-			rateSellerLinks( url, SELLER_RATING_UNKNOWN );
+			rateSellerLinks( url, SELLER_RATING_UNKNOWN, SELLER_COUNTRY_UNKNOWN );
 		}
 	})
 	.then( text =>
 	{
-		const m = text.match( SELLER_RATING_REX );
 		console.log( '[DEBUG] Fetched ' + url );
-		rateSellerLinks( url, m ? m[1] : SELLER_RATING_UNKNOWN );
+		const m = text.match( SELLER_RATING_REX  );
+		const c = text.match( SELLER_COUNTRY_REX );
+		rateSellerLinks( url,
+				m ? m[1] : SELLER_RATING_UNKNOWN,
+				c ? c[1] : SELLER_COUNTRY_UNKNOWN );
 	});
 });
 

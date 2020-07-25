@@ -5,7 +5,7 @@
   "author": "Andre St.",
   "homepage_url": "https://github.com/andre-st/amazon-sellerinfo",
   "version": "1.0.0",
-  "description": "Shows seller rating etc on the cart page",
+  "description": "Displays seller ratings on Amazon's shopping cart page",
   "applications": {
     "gecko": {
       "id": "amazon-sellerinfo@andre-st.github.io",
