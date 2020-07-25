@@ -12,8 +12,8 @@ right before I could mess up.
 
 ## Install permanently
 
-1. currently not available on addons.mozilla.org (self-distributed via GitHub)
-2. download [latest XPI-file](https://github.com/andre-st/amazon-sellerinfo/releases) (all signed)
+1. currently not available on addons.mozilla.org (GitHub support only)
+2. download [latest XPI-file](https://github.com/andre-st/amazon-sellerinfo/releases) (was checked and signed by Mozilla)
 3. visit `about:addons`, click gear symbol &#9881;, install from file, select downloaded XPI-file 
 
 
@@ -28,12 +28,20 @@ For permanent install of unsigned add-ons [see here](https://support.mozilla.org
 
 ## Permissions
 
-- access to some pages on Amazon
+- modifies Amazon's shopping cart webpage
+- reads Amazon's seller info webpage
+- details see 'permissions' in [manifest.json](manifest.json)
+- this addon is easy to inspect if you consider using it:
+	- no 3rd party libs, nothing minified, small files
+	- XPI files are just Zip archives
 
 
 ## Observations and limitations
 
-- limited to European Amazon sites
+- European Amazon sites only
+- Amazon's request throttling might kick in and you will see one or many "?" rating (web console should print a HTTP 503 error)
+- see [current issues](https://github.com/andre-st/amazon-sellerinfo/issues)
+
 
 
 ## Feedback
