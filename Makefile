@@ -19,7 +19,7 @@ BUILD_DIR         = _build
 
 
 # ----------------------------------------------------------------------------
-## make all          :  Installs programs and dependencies from CPAN (default)
+## make all          :  Synonymous with 'make release'
 all: release
 
 
@@ -33,7 +33,7 @@ docs:
 
 
 # ----------------------------------------------------------------------------
-## make docs         :  Creates icons in different sizes
+## make docs         :  Creates icons in different sizes based on the largest one
 .PHONY: icons
 icons:
 	convert ./icons/128.png -resize 96x96 ./icons/96.png
