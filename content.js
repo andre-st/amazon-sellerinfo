@@ -4,7 +4,7 @@
 //    Deduplication wouldn't work here as the URLs are different.
 //
 //    So we extract the *unique* seller IDs from these URLs, and
-//    onstruct *fewer* seller URLs using these unique IDs, query them, and
+//    construct *fewer* seller URLs using these unique IDs, query them, and
 //    update some data-attributes of *all* the (different) links of that seller on the webpage.
 //
 // 2. Style-sheets create the visual elements using the data attributes of the updated links.
