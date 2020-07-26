@@ -3,6 +3,7 @@
 // and construct *fewer* seller URLs using these IDs, query them 
 // and update all links of that seller on the webpage.
 // This is to evade Amazon's HTTP 503 request throttling.
+// Style sheets create the visual elements using data from the updated links.
 
 const sellerCountryFrom = (s   ) => (_ = s.match( /<span class="a-list-item">([A-Z]{2})<\/span><\/li><\/ul>/m )) && _[1];  // Two letter code
 const sellerRatingFrom  = (s   ) => (_ = s.match( /feedback-detail-description" href="#"><b>([0-9]+%)/m       )) && _[1];
