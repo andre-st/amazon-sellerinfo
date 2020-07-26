@@ -38,8 +38,10 @@ For permanent install of unsigned add-ons [see here](https://support.mozilla.org
 
 ## Observations and limitations
 
-- European Amazon sites only
+- European Amazon sites only: Amazon.co.uk, Amazon.de, Amazon.fr, Amazon.it, and Amazon.es
 - Amazon's request throttling might kick in and you will see one or many "?" ratings (web console should print a HTTP 503 error)
+- after some time (perhaps of testing too often), 1 (foreign) seller info page was not accessible anymore although others were still available - even with the add-on being disabled. 
+	I was redirected to the help page. Maybe a bug or anti-bot feature. Still not accessible after ~14 hours.
 - see [current issues](https://github.com/andre-st/amazon-sellerinfo/issues)
 
 
