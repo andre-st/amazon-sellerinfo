@@ -13,7 +13,7 @@ const SELLER_COUNTRY_UNKNOWN = '?';
 // So we will build something with the seller ID:
 const sellerLinks = Array.from( document.querySelectorAll( SELLER_LINK_SELECTOR ));
 const sellerIds   = sellerLinks
-				.map( l => l.getAttribute( 'href' ).match( SELLER_URL_ID_REX )[1] );
+				.map( l => l.getAttribute( 'href' ).match( SELLER_URL_ID_REX )[1] )
 				.filter( (v,i,a) => a.indexOf( v ) === i );  // Unique
 
 
