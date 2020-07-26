@@ -20,7 +20,7 @@ const sellerIds   = sellerLinks
 // UI elements are added via CSS:
 const updateSellerLinks = (id,r,c) => sellerLinks
 				.filter ( l =>  l.getAttribute( 'href' ).includes( 'seller=' + id ))
-				.forEach( l =>{ l.setAttribute( 'data-andrest-rating',  r );
+				.forEach( l =>{ l.setAttribute( 'data-andrest-rating',  r )
 				                l.setAttribute( 'data-andrest-country', c ); });
 
 
