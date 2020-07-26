@@ -34,7 +34,7 @@ docs:
 
 
 # ----------------------------------------------------------------------------
-## make docs         :  Creates icons in different sizes based on the largest one
+## make icons        :  Creates icons in different sizes based on the largest one
 .PHONY: icons
 icons:
 	convert ./icons/128.png -resize 96x96 ./icons/96.png
