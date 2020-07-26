@@ -1,10 +1,11 @@
+const SELLER_RATING_UNKNOWN  = '?';
+const SELLER_COUNTRY_UNKNOWN = '?';
 const SELLER_RATING_REX      = new RegExp( 'feedback-detail-description" href="#"><b>([0-9]+%)',       'm' );
 const SELLER_COUNTRY_REX     = new RegExp( '<span class="a-list-item">([A-Z]{2})<\/span><\/li><\/ul>', 'm' );    // Two letter code
 const SELLER_URL_ID_REX      = new RegExp( 'seller=([a-zA-Z9-9+-_]+)' );
 const SELLER_LINK_SELECTOR   = 'a[href^="/gp/help/seller/at-a-glance.html"]';
-const SELLER_URL_STUB        = window.location.origin + '/gp/help/seller/at-a-glance.html/ref=ox_sc_seller_sfl_s1?seller=';  // Absolute URL for permission's sake
-const SELLER_RATING_UNKNOWN  = '?';
-const SELLER_COUNTRY_UNKNOWN = '?';
+const sellerUrl              = id     => window.location.origin + '/gp/help/seller/at-a-glance.html/ref=ox_sc_seller_sfl_s1?seller=' + id;  // Absolute URL for permission's sake
+const isUrlOfSeller          = (u,id) => u.includes( 'seller=' + id );
 
 
 // Seller info URLs are different even for the same seller.
@@ -19,7 +20,7 @@ const sellerIds   = sellerLinks
 
 // UI elements are added via CSS:
 const updateSellerLinks = (id,r,c) => sellerLinks
-				.filter ( l =>  l.getAttribute( 'href' ).includes( 'seller=' + id ))
+				.filter ( l =>  isUrlOfSeller( l.getAttribute( 'href' ), id ))
 				.forEach( l =>{ l.setAttribute( 'data-andrest-rating',  r )
 				                l.setAttribute( 'data-andrest-country', c ); });
 
@@ -27,21 +28,21 @@ const updateSellerLinks = (id,r,c) => sellerLinks
 // Fetch all seller info asynchronously:
 sellerIds.forEach( id =>
 {
-	const absUrl = SELLER_URL_STUB + id;
-	fetch( absUrl )
+	const url = sellerUrl( id );
+	fetch( url )
 	.then( resp =>
 	{
 		if( resp.ok )
 			return resp.text();
 		else
 		{
-			console.log( '[ERROR] Fetching seller info failed: ' + absUrl + ' (HTTP ' + resp.status + ')' );
+			console.log( '[ERROR] Fetching seller info failed: ' + url + ' (HTTP ' + resp.status + ')' );
 			updateSellerLinks( id, SELLER_RATING_UNKNOWN, SELLER_COUNTRY_UNKNOWN );
 		}
 	})
 	.then( text =>
 	{
-		console.log( '[DEBUG] Fetched ' + absUrl );
+		console.log( '[DEBUG] Fetched seller info: ' + url );
 		const m = text.match( SELLER_RATING_REX  );
 		const c = text.match( SELLER_COUNTRY_REX );
 		updateSellerLinks( id, m ? m[1] : SELLER_RATING_UNKNOWN, c ? c[1] : SELLER_COUNTRY_UNKNOWN );
