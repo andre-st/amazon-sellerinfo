@@ -1,49 +1,42 @@
-const SELLER_LINK_SELECTOR = 'a[href^="/gp/help/seller/at-a-glance.html"]';
-const sellerCountryFrom    = (s   ) => (_ = s.match( /<span class="a-list-item">([A-Z]{2})<\/span><\/li><\/ul>/m )) && _[1];  // Two letter code
-const sellerRatingFrom     = (s   ) => (_ = s.match( /feedback-detail-description" href="#"><b>([0-9]+%)/m       )) && _[1];
-const sellerIdFrom         = (s   ) => (_ = s.match( /seller=([a-zA-Z9-9+-_]+)/                                  )) && _[1];
-const isUrlOfSeller        = (s,id) => s.includes( 'seller=' + id );
-const sellerUrl            = (  id) => window.location.origin + '/gp/help/seller/at-a-glance.html/ref=ox_sc_seller_sfl_s1?seller=' + id;  // Absolute URL for permission's sake
+const sellerCountryFrom = (s   ) => (_ = s.match( /<span class="a-list-item">([A-Z]{2})<\/span><\/li><\/ul>/m )) && _[1];  // Two letter code
+const sellerRatingFrom  = (s   ) => (_ = s.match( /feedback-detail-description" href="#"><b>([0-9]+%)/m       )) && _[1];
+const sellerIdFrom      = (s   ) => (_ = s.match( /seller=([a-zA-Z9-9+-_]+)/                                  )) && _[1];
+const isUrlOfSeller     = (s,id) => s.includes( 'seller=' + id );
+const sellerUrl         = (  id) => window.location.origin + '/gp/help/seller/at-a-glance.html?seller=' + id;
+const sellerLinks       = Array.from( document.querySelectorAll( 'a[href^="/gp/help/seller/at-a-glance.html"]' ));
+const sellerIds         = sellerLinks
+                            .map   ( (l    ) => sellerIdFrom( l.getAttribute( 'href' )))
+                            .filter( (v,i,a) => a.indexOf( v ) === i );
+                            // Since the same seller has different URLs,
+                            // we will create seller URLs using these IDs,
+                            // unique to prevent Amazon's HTTP 503 request throttling
 
-
-// Seller info URLs are different even for the same seller.
-// We don't want multiple requests for basically the same info
-// as it also triggers Amazon's HTTP503 request throttling.
-// So we will build something with the seller ID:
-const sellerLinks = Array.from( document.querySelectorAll( SELLER_LINK_SELECTOR ));
-const sellerIds   = sellerLinks
-				.map( l => sellerIdFrom( l.getAttribute( 'href' )))
-				.filter( (v,i,a) => a.indexOf( v ) === i );  // Unique
-
-
-// UI elements are added via CSS:
 const updateSellerLinks = (id,r,c) => sellerLinks
-				.filter ( l =>  isUrlOfSeller( l.getAttribute( 'href' ), id ))
-				.forEach( l =>{ l.setAttribute( 'data-andrest-rating',  r || '?' )
-				                l.setAttribute( 'data-andrest-country', c || '?' ); });
-
-
-// Fetch all seller info asynchronously:
+                                        .filter ( l =>  isUrlOfSeller( l.getAttribute( 'href' ), id ))
+                                        .forEach( l =>{ l.setAttribute( 'data-andrest-rating',  r || '?' )
+                                                        l.setAttribute( 'data-andrest-country', c || '?' ); });
 sellerIds.forEach( id =>
 {
-	const url = sellerUrl( id );
-	fetch( url )
+	const url = sellerUrl( id );  // Absolute URL for permission's sake
+	fetch( url )  // Async!
 	.then( resp =>
 	{
-		if( resp.ok )
-			return resp.text();
-		else
-		{
-			console.log( '[ERROR] Fetching seller info failed: ' + url + ' (HTTP ' + resp.status + ')' );
-			updateSellerLinks( id );
-		}
+		if( resp.ok ) return resp.text();
+		
+		//Internet connection OK but server issues:
+		console.error( '[ERROR] Cannot fetch seller info from ' + url + ': HTTP ' + resp.status );
+		updateSellerLinks( id );
 	})
 	.then( text =>
 	{
 		console.log( '[DEBUG] Fetched seller info: ' + url );
 		updateSellerLinks( id, sellerRatingFrom( text ), sellerCountryFrom( text ));
+	})
+	.catch( err =>  // Intenet connection issues:
+	{
+		console.error( '[FATAL] Cannot fetch seller info from ' + url + ': ', err );
+		updateSellerLinks( id );
 	});
 });
-
 
 
