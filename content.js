@@ -1,9 +1,9 @@
 const SELLER_LINK_SELECTOR   = 'a[href^="/gp/help/seller/at-a-glance.html"]';
-const extractSellerCountry   = (s    ) => (_ = s.match( /<span class="a-list-item">([A-Z]{2})<\/span><\/li><\/ul>/m )) && _[1];  // Two letter code
-const extractSellerRating    = (s    ) => (_ = s.match( /feedback-detail-description" href="#"><b>([0-9]+%)/m       )) && _[1];
-const sellerIdFromUrl        = (u    ) => (_ = u.match( /seller=([a-zA-Z9-9+-_]+)/                                  )) && _[1];
-const isUrlOfSeller          = (u,id ) => u.includes( 'seller=' + id );
-const sellerUrl              = (  id ) => window.location.origin + '/gp/help/seller/at-a-glance.html/ref=ox_sc_seller_sfl_s1?seller=' + id;  // Absolute URL for permission's sake
+const extractSellerCountry   = (s   ) => (_ = s.match( /<span class="a-list-item">([A-Z]{2})<\/span><\/li><\/ul>/m )) && _[1];  // Two letter code
+const extractSellerRating    = (s   ) => (_ = s.match( /feedback-detail-description" href="#"><b>([0-9]+%)/m       )) && _[1];
+const sellerIdFromUrl        = (u   ) => (_ = u.match( /seller=([a-zA-Z9-9+-_]+)/                                  )) && _[1];
+const isUrlOfSeller          = (u,id) => u.includes( 'seller=' + id );
+const sellerUrl              = (  id) => window.location.origin + '/gp/help/seller/at-a-glance.html/ref=ox_sc_seller_sfl_s1?seller=' + id;  // Absolute URL for permission's sake
 
 
 // Seller info URLs are different even for the same seller.
