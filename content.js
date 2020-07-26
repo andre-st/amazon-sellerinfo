@@ -1,9 +1,14 @@
-// Since the same seller has different URLs on the shopping cart webpage,
-// we extract the seller IDs from these URLs
-// and construct *fewer* seller URLs using these IDs, query them 
-// and update all links of that seller on the webpage.
-// This is to evade Amazon's HTTP 503 request throttling.
-// Style sheets create the visual elements using data from the updated links.
+// 1. On the shopping cart webpage, every seller has a different info URL for each item that he sells.
+//    Querying all of one seller's URLs on the page means N requests for the same info.
+//    It might trigger Amazon's HTTP 503 request throttling earlier than necessary, too.
+//    Deduplication wouldn't work here as the URLs are different.
+//
+//    So we extract the *unique* seller IDs from these URLs, and
+//    onstruct *fewer* seller URLs using these unique IDs, query them, and
+//    update some data-attributes of *all* the (different) links of that seller on the webpage.
+//
+// 2. Style-sheets create the visual elements using the data attributes of the updated links.
+//
 
 const sellerCountryFrom = (s   ) => (_ = s.match( /<span class="a-list-item">([A-Z]{2})<\/span><\/li><\/ul>/m )) && _[1];  // Two letter code
 const sellerRatingFrom  = (s   ) => (_ = s.match( /feedback-detail-description" href="#"><b>([0-9]+%)/m       )) && _[1];
@@ -13,6 +18,7 @@ const isUrlOfSeller     = (s,id) => s.includes( 'seller=' + id );
 const sellerUrl         = (  id) => window.location.origin + '/gp/help/seller/at-a-glance.html?seller=' + id;
 const sellerLinks       = Array.from( document.querySelectorAll( 'a[href^="/gp/help/seller/at-a-glance.html"]' ));
 const sellerIds         = sellerLinks.map( sellerIdFromLink ).filter( (v,i,a) => a.indexOf( v ) === i );  // Unique
+
 
 const updateSellerLinks = (id,r,c) => sellerLinks
                             .filter ( l =>  isUrlOfSeller( l.getAttribute( 'href' ), id ))
