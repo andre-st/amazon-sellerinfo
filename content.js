@@ -11,19 +11,21 @@ const SELLER_COUNTRY_UNKNOWN = '?';
 // We don't want multiple requests for basically the same info
 // as it also triggers Amazon's HTTP503 request throttling.
 // So we will build something with the seller ID:
-const sellerLinks   = Array.from( document.querySelectorAll( SELLER_LINK_SELECTOR ));
-const sellerIds     = sellerLinks.map( l => l.getAttribute( 'href' ).match( SELLER_URL_ID_REX )[1] );
-const sellerIdsUniq = sellerIds.filter( (v,i,a) => a.indexOf( v ) === i );
+const sellerLinks = Array.from( document.querySelectorAll( SELLER_LINK_SELECTOR ));
+const sellerIds   = sellerLinks
+				.map( l => l.getAttribute( 'href' ).match( SELLER_URL_ID_REX )[1] );
+				.filter( (v,i,a) => a.indexOf( v ) === i );  // Unique
 
 
 // UI elements are added via CSS:
-const rateSellerLinks = (id,r,c) => sellerLinks
-                                      .filter ( l =>  l.getAttribute( 'href' ).includes( 'seller=' + id ))
-                                      .forEach( l =>{ l.setAttribute( 'data-andrest-rating',  r );
-                                                      l.setAttribute( 'data-andrest-country', c ); });
+const updateSellerLinks = (id,r,c) => sellerLinks
+				.filter ( l =>  l.getAttribute( 'href' ).includes( 'seller=' + id ))
+				.forEach( l =>{ l.setAttribute( 'data-andrest-rating',  r );
+				                l.setAttribute( 'data-andrest-country', c ); });
+
 
 // Fetch all seller info asynchronously:
-sellerIdsUniq.forEach( id =>
+sellerIds.forEach( id =>
 {
 	const absUrl = SELLER_URL_STUB + id;
 	fetch( absUrl )
@@ -34,7 +36,7 @@ sellerIdsUniq.forEach( id =>
 		else
 		{
 			console.log( '[ERROR] Fetching seller info failed: ' + absUrl + ' (HTTP ' + resp.status + ')' );
-			rateSellerLinks( id, SELLER_RATING_UNKNOWN, SELLER_COUNTRY_UNKNOWN );
+			updateSellerLinks( id, SELLER_RATING_UNKNOWN, SELLER_COUNTRY_UNKNOWN );
 		}
 	})
 	.then( text =>
@@ -42,7 +44,7 @@ sellerIdsUniq.forEach( id =>
 		console.log( '[DEBUG] Fetched ' + absUrl );
 		const m = text.match( SELLER_RATING_REX  );
 		const c = text.match( SELLER_COUNTRY_REX );
-		rateSellerLinks( id, m ? m[1] : SELLER_RATING_UNKNOWN, c ? c[1] : SELLER_COUNTRY_UNKNOWN );
+		updateSellerLinks( id, m ? m[1] : SELLER_RATING_UNKNOWN, c ? c[1] : SELLER_COUNTRY_UNKNOWN );
 	});
 });
 
