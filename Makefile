@@ -29,7 +29,7 @@ all: release
 .PHONY: docs
 docs:
 	# vX.X, vX.XX.X, image:X.XX.X
-	sed -i -E "s/([v:])[0-9\.]+/\1${PROJECT_VERSION}/"  README.md manifest.json
+	sed -i -E "s/([v:])[0-9\.]+/\1${PROJECT_VERSION}/"           README.md
 	sed -i -E 's/("version":\s*")[0-9\.]+/\1${PROJECT_VERSION}/' manifest.json
 
 
