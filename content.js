@@ -15,7 +15,7 @@ const sellerRatingFrom  = (s   ) => (_ = s.match( /feedback-detail-description" 
 const sellerIdFrom      = (s   ) => (_ = s.match( /seller=([a-zA-Z9-9+-_]+)/                                  )) && _[1];
 const sellerIdFromLink  = (l   ) => sellerIdFrom( l.getAttribute( 'href' ));
 const isUrlOfSeller     = (s,id) => s.includes( 'seller=' + id );
-const sellerUrl         = (  id) => window.location.origin + '/gp/help/seller/at-a-glance.html?seller=' + id;
+const sellerUrl         = (  id) => window.location.origin + '/sp/ref=x_' + Date.now() + '?seller=' + id;
 const sellerLinks       = Array.from( document.querySelectorAll( 'a[href^="/gp/help/seller/at-a-glance.html"]' ));
 const sellerIds         = sellerLinks.map( sellerIdFromLink ).filter( (v,i,a) => a.indexOf( v ) === i );  // Unique
 
