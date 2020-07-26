@@ -8,13 +8,11 @@
 const sellerCountryFrom = (s   ) => (_ = s.match( /<span class="a-list-item">([A-Z]{2})<\/span><\/li><\/ul>/m )) && _[1];  // Two letter code
 const sellerRatingFrom  = (s   ) => (_ = s.match( /feedback-detail-description" href="#"><b>([0-9]+%)/m       )) && _[1];
 const sellerIdFrom      = (s   ) => (_ = s.match( /seller=([a-zA-Z9-9+-_]+)/                                  )) && _[1];
+const sellerIdFromLink  = (l   ) => sellerIdFrom( l.getAttribute( 'href' ));
 const isUrlOfSeller     = (s,id) => s.includes( 'seller=' + id );
 const sellerUrl         = (  id) => window.location.origin + '/gp/help/seller/at-a-glance.html?seller=' + id;
 const sellerLinks       = Array.from( document.querySelectorAll( 'a[href^="/gp/help/seller/at-a-glance.html"]' ));
-const sellerIds         = sellerLinks
-                            .map   ( (l    ) => sellerIdFrom( l.getAttribute( 'href' )))
-                            .filter( (v,i,a) => a.indexOf( v ) === i );  // Unique
-
+const sellerIds         = sellerLinks.map( sellerIdFromLink ).filter( (v,i,a) => a.indexOf( v ) === i );  // Unique
 
 const updateSellerLinks = (id,r,c) => sellerLinks
                             .filter ( l =>  isUrlOfSeller( l.getAttribute( 'href' ), id ))
