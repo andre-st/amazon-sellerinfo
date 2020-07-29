@@ -17,7 +17,7 @@
 //
 
 
-const _sellers = {};  // Blackboard  { sellerId: { rating: '', country: '' }, ...}
+const _sellers = {};  // { sellerId: { rating: '', country: '' }, ...}
 
 
 function updateSellers()
@@ -29,20 +29,23 @@ function updateSellers()
 	const isUrlOfSeller     = (s,id) => s.includes( 'seller=' + id );
 	const sellerUrl         = (  id) => window.location.origin + '/sp/ref=x_' + Date.now() + '?seller=' + id;
 	const sellerLinks       = Array.from( document.querySelectorAll( 'a[href*="seller="]' ));
-	const sellerIds         = sellerLinks.map( sellerIdFromLink ).filter( (v,i,a) => a.indexOf( v ) === i );  // Unique
 	
 	
 	const updateLinks = () => sellerLinks.forEach( l =>
-	{ 
+	{
 		const id = sellerIdFromLink( l );
 		if( !(id in _sellers) || !_sellers[id].loaded ) return;
 		l.setAttribute( 'data-andrest-rating',  _sellers[id].rating  || '?' );
 		l.setAttribute( 'data-andrest-country', _sellers[id].country || '?' );
 	});
 	
+	updateLinks();
 	
-	sellerIds
-	.filter ( id => !(id in _sellers))
+	
+	sellerLinks
+	.map    ( sellerIdFromLink                )
+	.filter ( (v,i,a) => a.indexOf( v ) === i )  // Unique IDs
+	.filter ( id => !(id in _sellers)         )  // Just sellers not already fetched
 	.forEach( id =>
 	{
 		_sellers[id] = { loaded: false };
@@ -71,9 +74,6 @@ function updateSellers()
 			updateLinks();
 		});
 	});
-	
-	
-	updateLinks();
 }
 
 
