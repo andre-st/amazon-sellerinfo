@@ -18,7 +18,7 @@
         "https://www.amazon.de/gp/cart/view.html*",
 
         "https://www.amazon.es/gp/buy/*",
-        "https://www.amazon.es/gp/cart/view.htm",
+        "https://www.amazon.es/gp/cart/view.htm*",
 
         "https://www.amazon.fr/gp/buy/*",
         "https://www.amazon.fr/gp/cart/view.html*",
@@ -36,25 +36,11 @@
     }
   ],
   "permissions": [
-    "https://www.amazon.de/gp/buy/*",
-    "https://www.amazon.de/gp/cart/*",
-    "https://www.amazon.de/gp/help/seller/*",
-
-    "https://www.amazon.es/gp/buy/*",
-    "https://www.amazon.es/gp/cart/*",
-    "https://www.amazon.es/gp/help/seller/*",
-
-    "https://www.amazon.fr/gp/buy/*",
-    "https://www.amazon.fr/gp/cart/*",
-    "https://www.amazon.fr/gp/help/seller/*",
-
-    "https://www.amazon.it/gp/buy/*",
-    "https://www.amazon.it/gp/cart/*",
-    "https://www.amazon.it/gp/help/seller/*",
-
-    "https://www.amazon.co.uk/gp/buy/*",
-    "https://www.amazon.co.uk/gp/cart/*",
-    "https://www.amazon.co.uk/gp/help/seller/*"
+    "https://www.amazon.de/*",
+    "https://www.amazon.es/*",
+    "https://www.amazon.fr/*",
+    "https://www.amazon.it/*",
+    "https://www.amazon.co.uk/*"
   ],
   "icons": {
     "32": "icons/32.png",
