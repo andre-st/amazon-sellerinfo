@@ -1,10 +1,12 @@
-# Firefox Add-On for Amazon: Seller Info, v1.1.2
+# Firefox Add-On for Amazon: Seller Info, v1.2.0
 
 ![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)
 
-I often forget to check the seller before ordering (probably by design). 
-This add-on shows me the seller ratings on the Amazon shopping cart webpage, 
-right before I could mess up.
+I often forget to check the seller before placing the order (probably by design).
+This add-on shows me the sellers ratings and countries on the following Amazon webpages, right before I could mess up:
+
+- shopping cart webpage 
+- final "Review/Place Your Order" webpage
 
 
 ![Screenshot](README-screenshot.png?raw=true "Screenshot")

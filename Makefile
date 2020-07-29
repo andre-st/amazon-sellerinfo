@@ -11,7 +11,7 @@ MAKEFLAGS += --no-builtin-rules
 
 
 # Configure Make rules:
-PROJECT_VERSION   = 1.1.2
+PROJECT_VERSION   = 1.2.0
 PACKAGE           = amazon-sellerinfo
 RELEASE           = $(PACKAGE)-$(PROJECT_VERSION)
 GITDIR            = $(wildcard .git)
