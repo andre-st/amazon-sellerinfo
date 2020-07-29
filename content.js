@@ -10,8 +10,8 @@
 //
 // 2. Style-sheets create the visual elements using the data attributes of the updated links.
 //
-// 3. Moving shopping cart list items creates new items and
-//    pages of the order process are successively loaded via Javascript (so manifest "matches" doesn't match).
+// 3. Moving shopping cart list items to the secondary list and vice versa creates *new* links.
+//    Pages for the ordering-process steps are loaded via Javascript (so "matches" from manifest.json doesn't match).
 //    Therefore we regularly check and update seller links.
 //    For the sake of simplicity I just use a timer instead of the MutationObserver.
 //
