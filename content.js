@@ -17,7 +17,7 @@
 //
 
 
-const _sellers = {};  // { sellerId: { rating: '', country: '' }, ...}
+const _sellers = {};  // { sellerId: { rating: '96%', country: 'DE', loaded: true }, ...}
 
 
 function updateSellers()
@@ -26,7 +26,6 @@ function updateSellers()
 	const sellerRatingFrom  = (s   ) => (_ = s.match( /feedback-detail-description" href="#"><b>([0-9]+%)/m       )) && _[1];
 	const sellerIdFrom      = (s   ) => (_ = s.match( /seller=([a-zA-Z9-9+-_]+)/                                  )) && _[1];
 	const sellerIdFromLink  = (l   ) => sellerIdFrom( l.getAttribute( 'href' ));
-	const isUrlOfSeller     = (s,id) => s.includes( 'seller=' + id );
 	const sellerUrl         = (  id) => window.location.origin + '/sp/ref=x_' + Date.now() + '?seller=' + id;
 	const sellerLinks       = Array.from( document.querySelectorAll( 'a[href*="seller="]' ));
 	
@@ -78,5 +77,5 @@ function updateSellers()
 
 
 updateSellers();
-setInterval( updateSellers, 1500 );
+setInterval( updateSellers, 1500 );  // Polling
 
