@@ -17,7 +17,7 @@
 //
 
 
-const _sellers = {};  // { sellerId: { rating: '96%', country: 'DE', loaded: true }, ...}
+const _sellers = {};  // { "SellerId123": { rating: '96%', country: 'DE', loaded: true }, ...}
 
 
 function updateSellers()
