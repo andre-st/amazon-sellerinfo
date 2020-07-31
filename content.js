@@ -17,7 +17,7 @@
 //
 
 
-const _sellers = {};  // { "SellerId123": { rating: '96%', country: 'DE', loaded: true }, ...}
+const _sellers = {};  // { 'SellerId123': { rating: '96%', country: 'DE', loaded: true }, ...}
 
 
 function updateSellers()
@@ -44,7 +44,7 @@ function updateSellers()
 	sellerLinks
 	.map    ( sellerIdFromLink                )
 	.filter ( (v,i,a) => a.indexOf( v ) === i )  // Unique IDs
-	.filter ( id => !(id in _sellers)         )  // Just sellers not already fetched
+	.filter ( id => !(id in _sellers)         )  // Just sellers not already fetched / in fetching process
 	.forEach( id =>
 	{
 		_sellers[id] = { loaded: false };
