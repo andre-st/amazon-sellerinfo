@@ -22,11 +22,11 @@ const _sellers = {};  // { 'SellerId123': { rating: '96%', country: 'DE', loaded
 
 function updateSellers()
 {
-	const sellerCountryFrom = (s   ) => (_ = s.match( /<span class="a-list-item">([A-Z]{2})<\/span><\/li><\/ul>/m )) && _[1];  // Two letter code
-	const sellerRatingFrom  = (s   ) => (_ = s.match( /feedback-detail-description" href="#"><b>([0-9]+%)/m       )) && _[1];
-	const sellerIdFrom      = (s   ) => (_ = s.match( /seller=([a-zA-Z9-9+-_]+)/                                  )) && _[1];
-	const sellerIdFromLink  = (l   ) => sellerIdFrom( l.getAttribute( 'href' ));
-	const sellerUrl         = (  id) => window.location.origin + '/sp/ref=x_' + Date.now() + '?seller=' + id;
+	const sellerCountryFrom = (s ) => (_ = s.match( /<span class="a-list-item">([A-Z]{2})<\/span><\/li><\/ul>/m )) && _[1];  // Two letter code
+	const sellerRatingFrom  = (s ) => (_ = s.match( /feedback-detail-description" href="#"><b>([0-9]+%)/m       )) && _[1];
+	const sellerIdFrom      = (s ) => (_ = s.match( /seller=([a-zA-Z9-9+-_]+)/                                  )) && _[1];
+	const sellerIdFromLink  = (l ) => sellerIdFrom( l.getAttribute( 'href' ));
+	const sellerUrlFor      = (id) => window.location.origin + '/sp/ref=x_' + Date.now() + '?seller=' + id;
 	const sellerLinks       = Array.from( document.querySelectorAll( 'a[href*="seller="]' ));
 	
 	
@@ -48,7 +48,7 @@ function updateSellers()
 	.forEach( id =>
 	{
 		_sellers[id] = { loaded: false };
-		const url = sellerUrl( id );
+		const url = sellerUrlFor( id );
 		
 		fetch( url )  // Async! Absolute URL for permission's sake.
 		.then( resp =>
