@@ -30,20 +30,21 @@ For permanent install of unsigned add-ons [see here](https://support.mozilla.org
 
 ## Permissions
 
-- modifies Amazon's shopping cart webpage in order to display seller ratings next to the seller names
+- modifies some Amazon webpages in order to display seller ratings next to the seller names
 - reads Amazon's seller info webpage
-- details see 'permissions' in [manifest.json](manifest.json)
+- details see `permissions` and `matches` in [manifest.json](manifest.json)
 - this add-on is easy to inspect if you consider using it:
-	- no 3rd party libs, nothing minified, small files
-	- XPI files are just Zip archives
+	- small files
+	- no 3rd party libs, nothing minified
+	- Mozilla's `addon.xpi` files are just Zip archives
 
 
 ## Observations and limitations
 
 - European Amazon sites only: Amazon.co.uk, Amazon.de, Amazon.fr, Amazon.it, and Amazon.es
 - Amazon's request throttling might kick in and you will see one or many "?" ratings (web console should print a HTTP 503 error)
-- after some time (perhaps of testing too often), 1 (foreign) seller info page was not accessible anymore although others were still available - even with the add-on being disabled. 
-	I was redirected to the help page. Maybe a bug or anti-bot feature. Still not accessible after ~14 hours.
+- after some time (perhaps of testing too often), 1 (foreign) seller info page was not accessible anymore although others were still available - even with the add-on being disabled.
+	I was redirected to the help page. Maybe a bug or anti-bot feature. Accessible after ~24 hours again.
 - see [current issues](https://github.com/andre-st/amazon-sellerinfo/issues)
 
 
