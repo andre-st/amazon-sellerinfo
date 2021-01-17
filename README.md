@@ -1,6 +1,6 @@
-# Firefox Add-On for Amazon: Seller Info, v1.2.2
+# Browser Add-On for Amazon: Seller Info, v1.2.2
 
-![Maintenance](https://img.shields.io/maintenance/yes/2020.svg)
+![Maintenance](https://img.shields.io/maintenance/yes/2021.svg)
 
 I often forget to check the seller before placing the order (probably by design).
 This add-on shows me the sellers ratings and countries on the following Amazon webpages, right before I could mess up:
@@ -12,20 +12,35 @@ This add-on shows me the sellers ratings and countries on the following Amazon w
 ![Screenshot](README-screenshot.png?raw=true "Screenshot")
 
 
+
 ## Install permanently
 
+### Firefox
 1. currently not available on addons.mozilla.org (GitHub support only)
 2. download [latest XPI-file](https://github.com/andre-st/amazon-sellerinfo/releases) (was checked and signed by Mozilla)
 3. visit `about:addons`, click gear symbol &#9881;, install from file, select downloaded XPI-file 
 
+### Chrome
+1. todo
+
+
 
 ## Install temporary (developers)
 
+### Firefox
 1. download/clone this project
 2. visit `about:debugging` in Firefox
 3. click "Load Temporary Add-on" and select `manifest.json`
 
 For permanent install of unsigned add-ons [see here](https://support.mozilla.org/en-US/kb/add-on-signing-in-firefox#w_what-are-my-options-if-i-want-to-use-an-unsigned-add-on-advanced-users)
+
+
+### Chrome, Brave and other Chromium derivates
+1. download/clone this project
+2. Chrome > Settings > Extensions > [x] Developer mode (upper right corner)
+3. Chrome > Settings > Extensions > click <kbd>Load unpacked extension</kbd> 
+4. browse to the source directory of the downloaded, unarchived release and confirm
+
 
 
 ## Permissions

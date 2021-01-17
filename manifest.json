@@ -5,13 +5,8 @@
   "author": "Andre St.",
   "homepage_url": "https://github.com/andre-st/amazon-sellerinfo",
   "version": "1.2.2",
+  "version_name": "1.2.2 (2020-09-23)",
   "description": "Displays seller ratings on Amazon's shopping cart page",
-  "applications": {
-    "gecko": {
-      "id": "amazon-sellerinfo@andre-st.github.io",
-      "strict_min_version": "65.0"
-    }
-  },
   "content_scripts": [{
       "matches": [
         "https://www.amazon.de/gp/buy/*",
