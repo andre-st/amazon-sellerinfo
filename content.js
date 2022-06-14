@@ -22,9 +22,10 @@ const _sellers = {};  // { 'SellerId123': { rating: '96%', country: 'DE', loaded
 
 function updateSellers()
 {
-	const sellerCountryFrom = (s ) => (_ = s.match( /<span class="a-list-item">([A-Z]{2})<\/span><\/li><\/ul>/m )) && _[1];  // Two letter code
-	const sellerRatingFrom  = (s ) => (_ = s.match( /feedback-detail-description" href="#"><b>([0-9]+%)/m       )) && _[1];
-	const sellerIdFrom      = (s ) => (_ = s.match( /seller=([a-zA-Z9-9+-_]+)/                                  )) && _[1];
+	const sellerCountryFrom = (s ) =>((_ = s.match(       /page-section-about-seller.*?[\s>]([A-Z]{2})[0-9\s]+.*?page-section-feedback/s  )) ||
+	                                  (_ = s.match( /page-section-detail-seller-info.*?[\s>]([A-Z]{2})[0-9\s<]/s                          ))) && _[1];  // Two letter code in address field, UstId, ...
+	const sellerRatingFrom  = (s ) => (_ = s.match( /feedback-detail-description.*?([0-9]+%)/s                                            ))  && _[1];
+	const sellerIdFrom      = (s ) => (_ = s.match( /seller=([a-zA-Z9-9+-_]+)/                                                            ))  && _[1];
 	const sellerIdFromLink  = (l ) => sellerIdFrom( l.getAttribute( 'href' ));
 	const sellerUrlFor      = (id) => window.location.origin + '/sp/ref=x_' + Date.now() + '?seller=' + id;
 	const sellerLinks       = Array.from( document.querySelectorAll( 'a[href*="seller="]' ));
