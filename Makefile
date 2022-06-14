@@ -3,7 +3,7 @@
 
 # Don't start values with "_", Chrome rejects pkg if it finds dirs prefixed with _
 
-PROJECT_VERSION = 1.2.2
+PROJECT_VERSION = 1.3
 PACKAGE         = amazon-sellerinfo
 BUILD_DIR       = .build
 
