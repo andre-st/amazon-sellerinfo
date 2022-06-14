@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "amazon-sellerinfo",
+  "short_name": "amazon-sellerinfo",
+  "author": "Andre St.",
+  "homepage_url": "https://github.com/andre-st/amazon-sellerinfo",
+  "version": "1.3",
+  "version_name": "1.3 (2022-06-15)",
+  "description": "Displays seller ratings on Amazon's shopping cart page",
+  "content_scripts": [{
+      "matches": [
+        "https://www.amazon.de/gp/buy/*",
+        "https://www.amazon.de/gp/cart/view.html*",
+
+        "https://www.amazon.es/gp/buy/*",
+        "https://www.amazon.es/gp/cart/view.htm*",
+
+        "https://www.amazon.fr/gp/buy/*",
+        "https://www.amazon.fr/gp/cart/view.html*",
+
+        "https://www.amazon.it/gp/buy/*",
+        "https://www.amazon.it/gp/cart/view.html*",
+
+        "https://www.amazon.co.uk/gp/buy/*",
+        "https://www.amazon.co.uk/gp/cart/view.html*"
+      ],
+      "js":  ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_end",
+      "all_frames" : true
+    }
+  ],
+  "host_permissions": [
+    "https://www.amazon.de/*",
+    "https://www.amazon.es/*",
+    "https://www.amazon.fr/*",
+    "https://www.amazon.it/*",
+    "https://www.amazon.co.uk/*"
+  ],
+  "icons": {
+    "32": "icons/32.png",
+    "48": "icons/48.png",
+    "96": "icons/96.png",
+    "128": "icons/128.png"
+  }
+}
+
