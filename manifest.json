@@ -1,11 +1,11 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "amazon-sellerinfo",
   "short_name": "amazon-sellerinfo",
   "author": "Andre St.",
   "homepage_url": "https://github.com/andre-st/amazon-sellerinfo",
-  "version": "1.2.2",
-  "version_name": "1.2.2 (2020-09-23)",
+  "version": "1.3",
+  "version_name": "1.3 (2022-06-15)",
   "description": "Displays seller ratings on Amazon's shopping cart page",
   "content_scripts": [{
       "matches": [
@@ -30,7 +30,7 @@
       "all_frames" : true
     }
   ],
-  "permissions": [
+  "host_permissions": [
     "https://www.amazon.de/*",
     "https://www.amazon.es/*",
     "https://www.amazon.fr/*",
