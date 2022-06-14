@@ -1,6 +1,6 @@
 # Browser Add-On for Amazon: Seller Info, v1.3
 
-![Maintenance](https://img.shields.io/maintenance/yes/2021.svg)
+![Maintenance](https://img.shields.io/maintenance/yes/2022.svg)
 
 I often forget to check the seller before placing the order (probably by design).
 This add-on shows me the sellers ratings and countries on the following Amazon webpages, right before I could mess up:
