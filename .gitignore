@@ -7,5 +7,5 @@
 *.zip
 *.cookie
 *.xpi
-_*
+.build
 
