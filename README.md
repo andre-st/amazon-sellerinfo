@@ -1,4 +1,4 @@
-# Browser Add-On for Amazon: Seller Info, v1.2.2
+# Browser Add-On for Amazon: Seller Info, v1.3
 
 ![Maintenance](https://img.shields.io/maintenance/yes/2021.svg)
 
