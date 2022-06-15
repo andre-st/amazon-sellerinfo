@@ -13,7 +13,7 @@ This add-on shows me the sellers ratings and countries on the following Amazon w
 
 
 
-## Install permanently
+## Install
 
 ### Firefox
 1. currently not available on addons.mozilla.org (GitHub support only)
@@ -21,11 +21,11 @@ This add-on shows me the sellers ratings and countries on the following Amazon w
 3. visit `about:addons`, click gear symbol &#9881;, install from file, select downloaded XPI-file 
 
 ### Chrome
-1. todo
+1. follow section "Install for developers"
 
 
 
-## Install temporary (developers)
+## Install for developers
 
 ### Firefox
 1. download/clone this project
